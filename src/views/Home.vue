@@ -1,10 +1,27 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+import SingleProject from '../components/SingleProject.vue'
+const projects = ref([])
+
+const getProjects = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/projects')
+    const data = await response.json()
+    projects.value = data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+
+onMounted(() => {
+  getProjects()
+})
+</script>
 <template>
-  <h1 class="my-4 text-6xl font-bold">Home</h1>
-  <p class="max-w-xl mx-auto text-base leading-relaxed text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet
-    consectetur
-    adipisicing
-    elit. Illo voluptatum, nostrum labore reiciendis ut possimus. Aut voluptates, fugiat laboriosam soluta unde quam quas
-    est veniam quae, dicta nostrum eos repellendus natus ut! Dicta, harum odio, distinctio autem eaque saepe cupiditate
-    eum unde quas culpa repellendus hic sit alias vitae fugiat.
-  </p>
+  <div v-if="projects.length">
+    <div v-for="project in projects" :key="project.id">
+      <SingleProject :project="project" />
+    </div>
+  </div>
 </template>
