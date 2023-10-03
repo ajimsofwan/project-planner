@@ -13,6 +13,11 @@ const getProjects = async () => {
   }
 }
 
+function handleDelete(id) {
+  projects.value = projects.value.filter((project) => {
+    return project.id !== id
+  })
+}
 
 onMounted(() => {
   getProjects()
@@ -21,7 +26,7 @@ onMounted(() => {
 <template>
   <div v-if="projects.length">
     <div v-for="project in projects" :key="project.id">
-      <SingleProject :project="project" />
+      <SingleProject :project="project" @delete="handleDelete" />
     </div>
   </div>
 </template>
