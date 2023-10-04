@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
   <div v-if="projects.length">
     <div v-for="project in projects" :key="project.id">
-      <SingleProject :project="project" @delete="handleDelete" />
+      <SingleProject :project="project" @update="getProjects" />
     </div>
   </div>
 </template>
