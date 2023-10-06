@@ -39,14 +39,15 @@ const deleteProject = async () => {
 
 </script>
 <template>
-  <div class="max-w-xl mx-auto mb-2 cursor-pointer group">
+  <div class="max-w-xl mx-auto mb-2 group">
     <div class="overflow-hidden bg-white rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 dark:bg-slate-800">
       <div class="flex">
         <div :class="{ 'bg-green-600': project.complete, 'bg-rose-600': !project.complete }" class="flex-none w-1">
         </div>
         <div class="flex items-center justify-between flex-1 px-6 py-6 text-left">
           <div @click="handleShow">
-            <h1 class="text-2xl font-bold">{{ project.title }}
+            <h1 class="text-2xl font-bold cursor-pointer hover:text-slate-600 dark:hover:text-slate-500">{{ project.title
+            }}
             </h1>
             <div v-show="showDetails">
               <p class="text-gray-700 dark:text-gray-300"><span>{{ project.detail }}</span>
@@ -54,14 +55,14 @@ const deleteProject = async () => {
             </div>
           </div>
           <div>
-            <span v-if="project.complete" @click="toogleComplete"
-              class="mx-1 text-green-400 hover:text-green-600 material-icons">done</span>
-            <span v-else @click="toogleComplete"
-              class="mx-1 material-icons text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">done</span>
-            <span class="mx-1 material-icons text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">edit</span>
+            <span
+              class="mx-1 cursor-pointer material-icons text-slate-400 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-500">edit</span>
             <span @click="deleteProject"
-              class="mx-1 material-icons text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">delete</span>
-
+              class="mx-1 cursor-pointer material-icons text-slate-400 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-500">delete</span>
+            <span v-if="project.complete" @click="toogleComplete"
+              class="mx-1 text-green-400 cursor-pointer hover:text-green-600 material-icons">done</span>
+            <span v-else @click="toogleComplete"
+              class="mx-1 cursor-pointer material-icons text-slate-400 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-500">done</span>
           </div>
         </div>
       </div>

@@ -11,12 +11,6 @@
       "title": "Create email marketing",
       "detail": "Lorem ipsum",
       "complete": true
-    },
-    {
-      "title": "Update repo",
-      "details": null,
-      "complete": true,
-      "id": 3
     }
   ]
 }
